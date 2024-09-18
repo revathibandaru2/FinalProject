@@ -1,3 +1,2 @@
 # FinalProject
-HI HELLO 
-Have a good day
+this is a sample file
