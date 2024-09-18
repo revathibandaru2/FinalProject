@@ -1,0 +1,128 @@
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <h1 class="app-page-title">Overview</h1>
+            <div class="row g-4 mb-4 justify-content-center">
+                <div class="col-12 col-sm-6">
+                    <div class="app-card app-card-basic  shadow-sm">
+                        <div class="app-card-header p-3 border-bottom-0">
+                            <div class="row text-center gx-3 mt-3">
+                                <div class="col">
+                                    <div class="app-icon-holder">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-receipt"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
+                                            <path fill-rule="evenodd"
+                                                d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+                                        </svg>
+                                    </div>
+                                    <h4 class="app-card-title d-inline mx-3 ">Manage Section</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="app-card-body px-4 mt-3">
+                            <form class="auth-form login-form" [formGroup]="sectionFormGroup"
+                                (ngSubmit)="createSection(sectionFormGroup)">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col">
+                                        <div class="mb-4">
+                                            <select formControlName="classId" class="form-select" (change)="loadSections($event)">
+                                                <option value=null>Select Class Name</option>
+                                                <option *ngFor="let cl of classes;" value="{{cl.classId}}">
+                                                {{cl.className}}</option>
+                                            </select>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center">
+                                    <div class="col">
+                                        <div class="mb-4">
+                                            <input type="text" formControlName="sectionName" class="form-control"
+                                                placeholder="Section Name"
+                                                [ngClass]="{'input-error':f['sectionName'].invalid && submitted}">
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center">
+                                    <div class="col">
+                                        <div class="mb-4">
+                                            <input type="text" formControlName="strength" class="form-control"
+                                                placeholder="Section Strength"
+                                                [ngClass]="{'input-error':f['strength'].invalid && submitted}">
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <div class="row d-flex justify-content-center">
+                                    <div class="col">
+                                        <div class="mb-4">
+                                            <input type="text" formControlName="roomNumber" class="form-control"
+                                                placeholder="Room Number"
+                                                [ngClass]="{'input-error':f['roomNumber'].invalid && submitted}">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="text-center">
+                                    <!-- <input type="submit" class="btn app-btn-primary theme-btn mx-auto" value ="{{isEdit==true?'Update Branch':'Add Branch'}}">
+                                        <span *ngIf="isLoading" class="spinner-border spinner-border-sm text-center"
+                                            role="status" aria-hidden="true"></span> -->
+                                            <button type="submit" class="btn app-btn-primary theme-btn mx-auto">
+                                                <span *ngIf="isLoading" class="spinner-border spinner-border-sm text-center"
+                                                    role="status" aria-hidden="true"></span> {{isEdit?'Update Section':'Add Section'}}</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="app-card-footer p-4 mt-auto">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="app-card app-card-basic  shadow-sm">
+                        <div class="app-card-header p-3 border-bottom-0">
+                            <div class="row text-center gx-3">
+                                <div class="col">
+                                    <div class="app-icon-holder">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-receipt"
+                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
+                                            <path fill-rule="evenodd"
+                                                d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+                                        </svg>
+                                    </div>
+                                    <h4 class="app-card-title d-inline mx-3 ">Section List</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="app-card-body  px-4 d-flex">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Section Name</th>
+                                        <th>Strength</th>
+                                        <th>Room Number</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let sec of sections">
+                                        <td>{{sec.sectionName}}</td>
+                                        <td>{{sec.strength}}</td>
+                                        <td>{{sec.roomNumber}}</td>
+                                        <td>
+                                            <a [routerLink]="[]" (click)="editSection(sec)">Edit</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="app-card-footer p-4 mt-auto">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

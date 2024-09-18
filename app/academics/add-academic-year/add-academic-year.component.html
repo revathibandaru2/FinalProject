@@ -1,0 +1,218 @@
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+            <h1 class="app-page-title">Overview</h1>
+            <div class="row g-4 mb-4 justify-content-center">
+                <div class="col-12">
+                    <div class="app-card app-card-basic  shadow-sm">
+                        <div class="app-card-header p-3 border-bottom-0">
+                            <div class="row text-center gx-3 mt-3">
+                                <div class="col">
+                                    <div class="app-icon-holder">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-receipt"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
+                                            <path fill-rule="evenodd"
+                                                d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+                                        </svg>
+                                    </div>
+                                    <h4 class="app-card-title d-inline mx-3 ">Create AcademicYear</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="app-card-body px-4 mt-3">
+                            <form class="auth-form login-form" [formGroup]="academicsFormGroup"
+                                (ngSubmit)="createAcademicYear(academicsFormGroup)">
+
+
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col">
+                                        <div class="mb-4">
+                                            <label for="academicYearName" class="form-label">AcademicYear Name</label>
+                                            <span style="color:red;"> *</span>
+                                            <input type="text" formControlName="academicYearName" class="form-control"
+                                                placeholder="AcademicYear Name"
+                                                [ngClass]="{'input-error':f['academicYearName'].invalid && submitted}">
+                                            </div>
+                                        </div>
+                                    <div class="col">
+                                        <div class="mb-4">
+                                            <label for="startMonth" class="form-label">Start Month</label>
+                                            <span style="color:red;"> *</span>
+
+                                            <input type="text" bsDatepicker formControlName="startMonth"
+                                            [bsConfig]="{minMode:'month', isAnimated:true, dateInputFormat :'YYYY-MM-DD'}"
+                                            placeholder="Select Start Month" [ngClass]="{'input-error':f['startMonth'].invalid && submitted}"
+                                            class="form-control" />
+    
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-4">
+                                            <label for="monthsTenure" class="form-label">Months Tenure</label>
+                                            <span style="color:red;"> *</span>
+                                            <input type="text" formControlName="monthsTenure"
+                            
+                                            placeholder="Select Months Tenure" [ngClass]="{'input-error':f['monthsTenure'].invalid && submitted}"
+                                            class="form-control" />
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col">
+                                            <div class="mb-4">
+                                                <label for="q1month" class="form-label">Fisrt Quartyearly Month</label>
+                                                <span style="color:red;"> *</span>
+                                                <input type="text" bsDatepicker formControlName="q1month"
+                                            [bsConfig]="{minMode:'month', isAnimated:true, dateInputFormat :'YYYY-MM-DD'}"
+                                            placeholder="Select Fisrt Quartyearly Month" [ngClass]="{'input-error':f['q1month'].invalid && submitted}"
+                                            class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-4">
+                                                <label for="q2month" class="form-label">Second Quartyearly Month</label>
+                                                <span style="color:red;"> *</span>
+                                                <input type="text" bsDatepicker formControlName="q2month"
+                                            [bsConfig]="{minMode:'month', isAnimated:true, dateInputFormat :'YYYY-MM-DD'}"
+                                            placeholder="Select Second Quartyearly Month" [ngClass]="{'input-error':f['q2month'].invalid && submitted}"
+                                            class="form-control" />
+                                            </div>
+                                        </div>
+                                    <div class="col">
+                                        <div class="mb-4">
+                                            <label for="q3month" class="form-label">Third Quartyearly Month</label>
+                                            <span style="color:red;"> *</span>
+                                            <input type="text" bsDatepicker formControlName="q3month"
+                                            [bsConfig]="{minMode:'month', isAnimated:true, dateInputFormat :'YYYY-MM-DD'}"
+                                            placeholder="Select Third Quartyearly Month" [ngClass]="{'input-error':f['q3month'].invalid && submitted}"
+                                            class="form-control" />
+                                        </div>
+                                    </div>
+                                    </div>
+                                    
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col">
+                                            <div class="mb-4">
+                                                <label for="q4month" class="form-label">Fourth Quartyearly Month</label>
+                                                <span style="color:red;"> *</span>
+                                                <input type="text" bsDatepicker formControlName="q4month"
+                                            [bsConfig]="{minMode:'month', isAnimated:true, dateInputFormat :'YYYY-MM-DD'}"
+                                            placeholder="Select Fourth Quartyearly Month" [ngClass]="{'input-error':f['q4month'].invalid && submitted}"
+                                            class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-4">
+                                                <label for="h1month" class="form-label">First HalfYearly Month</label>
+                                                <span style="color:red;"> *</span>
+                                                <input type="text" bsDatepicker formControlName="h1month"
+                                            [bsConfig]="{minMode:'month', isAnimated:true, dateInputFormat :'YYYY-MM-DD'}"
+                                            placeholder="Select First HalfYearly Month" [ngClass]="{'input-error':f['h1month'].invalid && submitted}"
+                                            class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-4">
+                                                <label for="h2month" class="form-label">Second Halfyearly Month</label>
+                                                <span style="color:red;"> *</span>
+                                                <input type="text" bsDatepicker formControlName="h2month"
+                                                [bsConfig]="{minMode:'month', isAnimated:true, dateInputFormat :'YYYY-MM-DD'}"
+                                                placeholder="Select Second Halfyearly Month" [ngClass]="{'input-error':f['h2month'].invalid && submitted}"
+                                                class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="mb-4">
+                                                <label for="paymentDueDate" class="form-label">Monthly Payment DueDate</label>
+                                                <span style="color:red;"> *</span>
+                                                <input type="text"  formControlName="paymentDueDate"
+
+                                                placeholder="Select Monthly Payment DueDate" [ngClass]="{'input-error':f['paymentDueDate'].invalid && submitted}"
+                                                class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                <div class="text-center">
+                                            <button type="submit" class="btn app-btn-primary theme-btn mx-auto">
+                                                <span *ngIf="isLoading" class="spinner-border spinner-border-sm text-center"
+                                                    role="status" aria-hidden="true"></span> {{isEdit==true?'Update AcademicYear':'Add AcademicYear'}}</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="app-card-footer p-4 mt-auto">
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div class="col-12">
+                    <div class="app-card app-card-basic  shadow-sm">
+                        <div class="app-card-header p-3 border-bottom-0">
+                            <div class="row text-center gx-3">
+                                <div class="col">
+                                    <div class="app-icon-holder">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-receipt"
+                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z" />
+                                            <path fill-rule="evenodd"
+                                                d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z" />
+                                        </svg>
+                                    </div>
+                                    <h4 class="app-card-title d-inline mx-3 ">AcademicYear List</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="app-card-body  px-4 d-flex">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>AcademicYear Name</th>
+                                        <th>Start Month</th>
+                                        <th>Months Tenure</th>
+                                        <th>First QuartYearly Month</th>
+                                        <th>Second QuartYearly Month</th>
+                                        <th>Third QuartYearly Month</th>
+                                        <th>Fourth QuartYearly Month</th>
+                                        <th>First HalfYearly Month</th>
+                                        <th>Second HalfYearly Month</th>
+                                        <th>Monthly PaymentDueDate</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let aca of academics">
+                                        <td>{{aca.academicYearName}}</td>
+                                        <td>{{aca.startMonth}}</td>
+                                        <td>{{aca.monthsTenure}}</td>
+                                        <td>{{aca.q1month}}</td>
+                                        <td>{{aca.q2month}}</td>
+                                        <td>{{aca.q3month}}</td>
+                                        <td>{{aca.q4month}}</td>
+                                        <td>{{aca.h1month}}</td>
+                                        <td>{{aca.h2month}}</td>
+                                        <td>{{aca.paymentDueDate}}</td>
+                                        <td>
+                                            <a [routerLink]="[]" (click)="editAcademicYear(aca)">Edit</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="app-card-footer p-4 mt-auto">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
